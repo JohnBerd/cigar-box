@@ -1,52 +1,69 @@
-#define PIN_PLANCH 		11
-#define PIN_DOOR 		10
-#define PIN_TOUCH_1 	7
-#define PIN_TOUCH_2 	8
-#define PIN_LIGHT		9
-#define INTERRUP_PIN    2
-
-#define THRESHOLD       40
-
-#include <Servo.h>
-#include <CapacitiveSensor.h>
-#include <MedianFilter.h>
 #include <avr/sleep.h>
 
-Servo servos_planch;
-Servo servo_door;
+#define SENSOR 2
+#define THRESHOLD 400
 
-CapacitiveSensor touch = CapacitiveSensor(PIN_TOUCH_1, PIN_TOUCH_2);
-MedianFilter mf(20, 0);
+int state = 0;
 
-bool opened = false;
-
-void setup() {
-    servos_planch.attach(PIN_PLANCH);
-    servo_door.attach(PIN_DOOR);
-    pinMode(PIN_LIGHT, OUTPUT);
+void setup()
+{
+    Serial.begin(9600);
+    pinMode(13, OUTPUT);
+    pinMode(SENSOR, INPUT);
 }
 
-void loop() {
-    long sensorValue = touch.capacitiveSensor(30);
-    mf.in( sensorValue);
-    sensorValue = mf.out();
-    if (!opened) {
-        open_the_box();
-    } else {
-        close_the_box();
+void loop()                    
+{
+    arduinoSleep();
+}
+
+void arduinoSleep()
+{
+    set_sleep_mode(SLEEP_MODE_PWR_DOWN);
+    sleep_enable();
+        Serial.println("dodo");
+
+    attachInterrupt(0, arduinoWakeUp, RISING);
+    delay(1000);
+    sleep_mode();
+    Serial.println("reveil");
+    sleep_disable();
+    detachInterrupt(0);
+    use_box();
+}
+
+void arduinoWakeUp()
+{
+    
+}
+
+void use_box()
+{
+  int now = millis();
+
+  while (digitalRead(2) == HIGH);
+  while (millis() - now < THRESHOLD) {
+    if (digitalRead(2) == HIGH) {
+      if (!state)
+        open_box();
+      else
+        close_box();
+      state = !state;
     }
+  }
+}
+void open_box()
+{
+  Serial.println("opening the box");
+  delay(2000);
+  digitalWrite(13, HIGH);
+  Serial.println("box opened");
 }
 
-void open_the_box() {
-    opened = true;
-}
-
-void close_the_box() {
-    opened = false;
-}
-
-void power_down() {
-    SMCR != (1<<2); //power down mode
-    SMCR != 1; //enable sleep
-    __asm__ __volatile("sleep");
+void close_box()
+{
+  Serial.println("closing the box");
+  delay(2000);
+  digitalWrite(13, LOW);
+  Serial.println("box closed");
 }
