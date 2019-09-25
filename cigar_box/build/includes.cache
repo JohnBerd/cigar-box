@@ -1,0 +1,17 @@
+[
+  {
+    "Sourcefile": "",
+    "Include": "",
+    "Includepath": "/root/.arduino15/packages/arduino/hardware/avr/1.6.23/cores/arduino"
+  },
+  {
+    "Sourcefile": "",
+    "Include": "",
+    "Includepath": "/root/.arduino15/packages/arduino/hardware/avr/1.6.23/variants/eightanaloginputs"
+  },
+  {
+    "Sourcefile": "/root/mygit/cigar-box/cigar_box/build/sketch/cigar_box.ino.cpp",
+    "Include": "",
+    "Includepath": ""
+  }
+]

@@ -1,0 +1,11 @@
+{
+  "additionalFiles": "",
+  "builtInLibrariesFolders": "/usr/local/bin/arduino-1.8.9/libraries",
+  "customBuildProperties": "programmer=arduino:usbtinyisp,build.path=/root/mygit/cigar-box/cigar_box/build,build.warn_data_percentage=75,runtime.tools.avrdude.path=/root/.arduino15/packages/arduino/tools/avrdude/6.3.0-arduino14,runtime.tools.avrdude-6.3.0-arduino14.path=/root/.arduino15/packages/arduino/tools/avrdude/6.3.0-arduino14,runtime.tools.arduinoOTA.path=/root/.arduino15/packages/arduino/tools/arduinoOTA/1.2.1,runtime.tools.arduinoOTA-1.2.1.path=/root/.arduino15/packages/arduino/tools/arduinoOTA/1.2.1,runtime.tools.avr-gcc.path=/root/.arduino15/packages/arduino/tools/avr-gcc/5.4.0-atmel3.6.1-arduino2,runtime.tools.avr-gcc-5.4.0-atmel3.6.1-arduino2.path=/root/.arduino15/packages/arduino/tools/avr-gcc/5.4.0-atmel3.6.1-arduino2",
+  "fqbn": "arduino:avr:mini",
+  "hardwareFolders": "/usr/local/bin/arduino-1.8.9/hardware,/root/.arduino15/packages",
+  "otherLibrariesFolders": "/root/Arduino/libraries",
+  "runtime.ide.version": "10809",
+  "sketchLocation": "/root/mygit/cigar-box/cigar_box/cigar_box.ino",
+  "toolsFolders": "/usr/local/bin/arduino-1.8.9/tools-builder,/usr/local/bin/arduino-1.8.9/hardware/tools/avr,/root/.arduino15/packages"
+}
